@@ -9,6 +9,8 @@ if (!contributions.value) {
 }
 
 const { user, prs } = contributions.value
+
+const filterPrs = prs.filter(v => v.type === 'User' && !v.repo.includes(user.username))
 const userUrl = `https://github.com/${user.username}`
 
 useHead({
@@ -86,7 +88,7 @@ useSeoMeta({
     </div>
 
     <div class="flex flex-col gap-6 sm:gap-10">
-      <PullRequest v-for="pr of prs" :key="pr.url" :data="pr" />
+      <PullRequest v-for="pr of filterPrs" :key="pr.url" :data="pr" />
     </div>
   </UContainer>
 </template>
