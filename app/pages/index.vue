@@ -10,7 +10,7 @@ if (!contributions.value) {
 
 const { user, prs } = contributions.value
 
-const filterPrs = prs.filter(v => v.type === 'User' && !v.repo.includes(user.username))
+const filterPrs = prs.filter(v => !v.repo.includes(user.username))
 const userUrl = `https://github.com/${user.username}`
 
 useHead({
